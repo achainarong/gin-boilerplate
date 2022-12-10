@@ -8,6 +8,6 @@ import (
 
 type HelloController struct{}
 
-func (hC *HelloController) Hello (context *gin.Context) {
+func (hC *HelloController) Default (context *gin.Context) {
 	context.String(http.StatusOK, "Hello World")
 }

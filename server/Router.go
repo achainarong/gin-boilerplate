@@ -14,12 +14,12 @@ func InitRouter() *gin.Engine {
 
 	// does'nt need to be versioned
 	health := new(controllers.HealthController)
-	router.GET("/health", health.Status)
+	router.GET("/health", health.Default)
 
 	v1 := router.Group("api/v1")
 	{
 		hello := new(controllers.HelloController)
-		v1.GET("/hello", hello.Hello)
+		v1.GET("/hello", hello.Default)
 	}
 
 	router.NoRoute(func (context *gin.Context) {

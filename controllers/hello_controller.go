@@ -6,8 +6,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
+
+
 type HelloController struct{}
 
 func (hC *HelloController) Default (context *gin.Context) {
-	context.String(http.StatusOK, "Hello World")
+	helloMessage := "Hello World!"
+	context.String(http.StatusOK, helloMessage)
 }

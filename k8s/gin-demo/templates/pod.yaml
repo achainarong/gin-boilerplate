@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: gin-demo
   labels:
-    app.kubernetes.io/name: proxy
+    app.kubernetes.io/name: gin-demo
 spec:
   containers:
     - name: gin-demo

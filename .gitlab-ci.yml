@@ -1,0 +1,22 @@
+build:
+  stage: build
+  image: docker:20.10.10
+  services:
+    - docker:20.10.10-dind
+  rules:
+    # - if: $CI_PIPELINE_SOURCE == "schedule"
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE .
+    # Pushes as latest tag add an image version if versioning needed
+    - docker push $CI_REGISTRY_IMAGE
+# deploy:
+#   stage: deploy
+#   image:
+#     name: alpine/helm:3.11.1
+#     entrypoint: [""]
+#   script:
+#     - mkdir ~/.kube
+#     - export KUBECONFIG=~/.kube/config
+#     - echo $KUBECONFIG_BASE_64 | base64 -d > $KUBECONFIG
+#     - helm upgrade --install spring-boot-demo -f ./ci-cd/helm/values.yaml -n demo ./ci-cd/helm

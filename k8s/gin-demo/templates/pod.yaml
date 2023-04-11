@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gin-demo
+  name: {{ .Values.name }}
   labels:
-    app.kubernetes.io/name: gin-demo
+    app.kubernetes.io/name: {{ .Values.name }}
 spec:
   containers:
     - name: gin-demo
-      image: gin-demo:latest
+      image: {{ .Values.deployment.image }}
       ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.deployment.port }}
           name: http

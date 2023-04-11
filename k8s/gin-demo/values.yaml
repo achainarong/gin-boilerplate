@@ -1,1 +1,5 @@
 name: gin-demo
+
+deployment: 
+  image: achainarong/gin-demo:latest
+  port: 8080
